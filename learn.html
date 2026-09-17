@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CATE Academy & Learn - The Ninth Life</title>
+<meta name="description" content="Master Solana, wallet security, and the ninth life with CATE Academy. Free interactive lessons and crypto safety guides.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#FFFFFF;
+  --bg2:#FBF8F9;
+  --card-bg:#FFFFFF;
+  --ivory:#16131B;
+  --dim:#665D6F;
+  --gold:#F4A8BA;
+  --gold-soft:#F4A8BA;
+  --ember:#E06085;
+  --hair:rgba(244,168,186,.4);
+  --disp:"Newsreader",Georgia,serif;
+  --word:"Cinzel",Georgia,serif;
+  --ui:"Space Grotesk",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+  --shell:min(1140px,calc(100% - 2.5rem));
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ivory);
+  font-family:var(--ui);font-size:16px;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.shell{width:var(--shell);margin-inline:auto}
+
+/* Top Navigation */
+.top{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:1rem clamp(1rem,3vw,2rem);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(244,168,186,.3);
+}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.85rem;letter-spacing:.2em;color:var(--gold);font-weight:700}
+.brand-icon{font-size:1.4rem;display:inline-block;filter:drop-shadow(0 0 10px rgba(244,168,186,.8))}
+.top__nav{display:flex;align-items:center;gap:1.5rem}
+.top__link{font-size:.85rem;font-weight:600;letter-spacing:.05em;color:var(--dim);transition:color .2s;position:relative}
+.top__link:hover,.top__link.active{color:var(--ember)}
+.top__link.active::after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+.top__actions{display:flex;align-items:center;gap:.6rem}
+.btn-gold{
+  background:var(--gold);color:#FFFFFF;font-weight:700;font-size:.8rem;padding:.55rem 1.1rem;
+  border-radius:999px;letter-spacing:.05em;transition:all .2s;box-shadow:0 0 16px rgba(244,168,186,.45);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(244,168,186,.7);color:#FFFFFF}
+
+/* Header & Banner */
+.hero{padding:4rem 0 3rem;text-align:center;position:relative}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:999px;
+  background:rgba(244,168,186,.15);border:1px solid rgba(244,168,186,.45);color:var(--ember);
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem;font-weight:700;
+}
+.hero-title{font-family:var(--disp);font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.15;margin:0 0 1rem;font-weight:400;color:var(--ivory)}
+.hero-title em{font-style:italic;color:var(--gold);font-family:var(--disp)}
+.hero-sub{max-width:640px;margin:0 auto 2rem;color:var(--dim);font-size:1.1rem}
+
+/* Grid & Modules */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-bottom:4rem}
+.card{
+  background:var(--card-bg);border:1px solid rgba(244,168,186,.35);border-radius:16px;padding:2rem;
+  transition:border-color .2s,transform .2s;display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 10px 30px rgba(0,0,0,.04);
+}
+.card:hover{border-color:rgba(244,168,186,.8);transform:translateY(-3px);box-shadow:0 15px 40px rgba(244,168,186,.15)}
+.card-tag{font-family:var(--mono);font-size:.7rem;color:var(--ember);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;font-weight:700}
+.card-title{font-family:var(--disp);font-size:1.5rem;margin:0 0 .8rem;font-weight:600;color:var(--ivory)}
+.card-desc{color:var(--dim);font-size:.95rem;line-height:1.6;margin-bottom:1.5rem;flex-grow:1}
+.card-list{list-style:none;padding:0;margin:0 0 1.5rem;font-size:.9rem}
+.card-list li{padding:.35rem 0;display:flex;align-items:center;gap:.6rem;color:var(--ivory)}
+.card-list li::before{content:'✓';color:var(--gold);font-weight:bold}
+.card-action{
+  display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.7rem 1.2rem;
+  background:rgba(244,168,186,.12);border:1px solid rgba(244,168,186,.4);border-radius:10px;
+  color:var(--ember);font-size:.85rem;font-weight:600;transition:all .2s;cursor:pointer;
+}
+.card-action:hover{background:var(--gold);color:#FFFFFF;border-color:var(--gold)}
+
+/* Interactive Quiz */
+.quiz-section{
+  background:linear-gradient(180deg,var(--bg2),#FFF2F5);border:1px solid rgba(244,168,186,.45);
+  border-radius:20px;padding:2.5rem clamp(1.2rem,4vw,3rem);margin-bottom:4rem;
+  box-shadow:0 15px 35px rgba(0,0,0,.04);
+}
+.quiz-header{text-align:center;margin-bottom:2rem}
+.quiz-title{font-family:var(--disp);font-size:2rem;margin:0 0 .5rem;color:var(--ivory)}
+.quiz-q{background:rgba(255,255,255,.9);border:1px solid rgba(244,168,186,.35);border-radius:14px;padding:1.8rem;margin-bottom:1.5rem}
+.quiz-q-title{font-size:1.15rem;font-weight:600;margin:0 0 1.2rem;color:var(--ember)}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media (max-width:680px){.quiz-options{grid-template-columns:1fr}}
+.opt-btn{
+  background:rgba(244,168,186,.08);border:1px solid rgba(244,168,186,.3);border-radius:10px;
+  padding:1rem;color:var(--ivory);text-align:left;font-family:var(--ui);font-size:.9rem;
+  cursor:pointer;transition:all .2s;
+}
+.opt-btn:hover{background:rgba(244,168,186,.2);border-color:var(--gold)}
+.opt-btn.correct{background:rgba(46,204,113,.2);border-color:#2ecc71;color:#1e7e46}
+.opt-btn.wrong{background:rgba(231,76,60,.2);border-color:#e74c3c;color:#a93226}
+.quiz-feedback{margin-top:1rem;font-size:.9rem;font-weight:600;display:none}
+
+/* Footer */
+footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:center;color:var(--dim);font-size:.85rem;background:var(--bg2)}
+@media (max-width:768px){
+  .top__nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/"><span class="brand-icon">🐱</span> $CATE</a>
+  <nav class="top__nav">
+    <a class="top__link" href="/#l1">Story</a>
+    <a class="top__link active" href="/learn">Learn</a>
+    <a class="top__link" href="/raids">Raids</a>
+    <a class="top__link" href="/arcade">Arcade</a>
+    <a class="top__link" href="/studio">Studio</a>
+    <a class="top__link" href="/vocab">Vocab</a>
+  </nav>
+  <div class="top__actions">
+    <a class="btn-gold" href="https://pump.fun/coin/Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump" target="_blank" rel="noopener noreferrer">BUY $CATE</a>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="hero">
+    <div class="hero-badge">CATE ACADEMY · CURRICULUM 1.0</div>
+    <h1 class="hero-title">Knowledge is the <em>Ninth Life</em></h1>
+    <p class="hero-sub">From zero to decentralized degen: master wallet safety, understand fair launch mechanics, and navigate Solana like a veteran.</p>
+  </section>
+
+  <div class="grid">
+    <!-- Module 1 -->
+    <div class="card">
+      <div>
+        <div class="card-tag">Lesson 01 · Fundamentals</div>
+        <h2 class="card-title">What is CATE?</h2>
+        <p class="card-desc">The story of the Dogecoin creator's feline companion and the cultural emergence of $CATE on Solana.</p>
+        <ul class="card-list">
+          <li>The Nine Lives mythos</li>
+          <li>Fair launch on Pump.fun</li>
+          <li>100% community decentralized</li>
+        </ul>
+      </div>
+      <a class="card-action" href="/vocab">Explore Vocab Dictionary →</a>
+    </div>
+
+    <!-- Module 2 -->
+    <div class="card">
+      <div>
+        <div class="card-tag">Lesson 02 · Security</div>
+        <h2 class="card-title">Wallet Safety Shield</h2>
+        <p class="card-desc">Non-negotiable security protocols to protect your SOL, recovery phrases, and tokens from drainers.</p>
+        <ul class="card-list">
+          <li>Seed phrase never goes online</li>
+          <li>Double-check Contract Address</li>
+          <li>Hardware & burner wallet separation</li>
+        </ul>
+      </div>
+      <button class="card-action" onclick="alert('Rule #1: Never share your 12 or 24-word seed phrase with anyone, including any support bots or websites!')">Review Golden Rules 🛡️</button>
+    </div>
+
+    <!-- Module 3 -->
+    <div class="card">
+      <div>
+        <div class="card-tag">Lesson 03 · Solana Tech</div>
+        <h2 class="card-title">How Solana & DEXs Work</h2>
+        <p class="card-desc">Understand 400ms block times, liquidity pools, bonding curve graduation, and DEXScreener charting.</p>
+        <ul class="card-list">
+          <li>Bonding curve vs Raydium pool</li>
+          <li>Slippage & transaction priority</li>
+          <li>Market Cap vs Liquidity ratios</li>
+        </ul>
+      </div>
+      <a class="card-action" href="https://dexscreener.com/solana/hmzvseemtzhhvznw9uwbag85hctmfnkbhzux16cy7ca3" target="_blank" rel="noopener noreferrer">Inspect Live DEX Chart ↗</a>
+    </div>
+  </div>
+
+  <!-- Interactive Quiz Section -->
+  <section class="quiz-section">
+    <div class="quiz-header">
+      <div class="hero-badge">INTERACTIVE TEST</div>
+      <h2 class="quiz-title">Test Your Crypto & CATE IQ</h2>
+      <p style="color:var(--dim);margin:0">Score 100% to earn your honorary Ninth Life Scholar badge.</p>
+    </div>
+
+    <div class="quiz-q" id="q1">
+      <p class="quiz-q-title">1. When someone asking for "wallet verification" asks for your 12-word seed phrase, what do you do?</p>
+      <div class="quiz-options">
+        <button class="opt-btn" onclick="answer(this, false, 'Never! Anyone asking for your seed phrase is an attacker trying to steal your funds.')">Type it into the verification portal</button>
+        <button class="opt-btn" onclick="answer(this, true, 'Correct! Never type, photograph, or share your recovery phrase.')">Block them immediately and never share it</button>
+        <button class="opt-btn" onclick="answer(this, false, 'Wrong. Sharing partial phrases still compromises your security.')">Send only the first 6 words</button>
+        <button class="opt-btn" onclick="answer(this, false, 'No! Support will NEVER ask for seed phrases.')">Ask if they are official customer support</button>
+      </div>
+      <div class="quiz-feedback" id="fb1"></div>
+    </div>
+
+    <div class="quiz-q" id="q2">
+      <p class="quiz-q-title">2. What is the official token contract address for $CATE on Solana?</p>
+      <div class="quiz-options">
+        <button class="opt-btn" onclick="answer(this, true, 'Correct! Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump is the authentic CA.')">Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump</button>
+        <button class="opt-btn" onclick="answer(this, false, 'Incorrect. Always verify character by character on Solscan.')">So11111111111111111111111111111111111111112</button>
+        <button class="opt-btn" onclick="answer(this, false, 'Incorrect. Beware of copycat ticker scams.')">CATEcoin99999999999999999999999999999999999</button>
+        <button class="opt-btn" onclick="answer(this, false, 'Incorrect. Always check the official website and X.')">PumpFunOfficialTokenAddress123456789</button>
+      </div>
+      <div class="quiz-feedback" id="fb2"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="shell">
+    <p>© 2026 THE CATECOIN COMMUNITY · ACADEMY BUILD 1.2 · THE NINTH LIFE</p>
+  </div>
+</footer>
+
+<script>
+function answer(btn, isCorrect, feedbackText){
+  var parent = btn.closest('.quiz-q');
+  var btns = parent.querySelectorAll('.opt-btn');
+  btns.forEach(function(b){ b.disabled = true; });
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  var fb = parent.querySelector('.quiz-feedback');
+  if(fb){
+    fb.style.display = 'block';
+    fb.style.color = isCorrect ? '#2ecc71' : '#e74c3c';
+    fb.textContent = feedbackText;
+  }
+}
+</script>
+</body>
+</html>

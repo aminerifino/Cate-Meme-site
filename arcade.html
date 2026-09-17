@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CATE Arcade - Ninth Life Mini-Game</title>
+<meta name="description" content="Play the official CATE Arcade retro coin catcher. Collect $CATE tokens, dodge the red candles, and survive with your nine lives.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#FFFFFF;
+  --bg2:#FBF8F9;
+  --card-bg:#FFFFFF;
+  --ivory:#16131B;
+  --dim:#665D6F;
+  --gold:#F4A8BA;
+  --gold-soft:#F4A8BA;
+  --ember:#E06085;
+  --disp:"Newsreader",Georgia,serif;
+  --word:"Cinzel",Georgia,serif;
+  --ui:"Space Grotesk",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+  --shell:min(1000px,calc(100% - 2.5rem));
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ivory);
+  font-family:var(--ui);font-size:16px;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.shell{width:var(--shell);margin-inline:auto}
+
+/* Top Navigation */
+.top{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:1rem clamp(1rem,3vw,2rem);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(244,168,186,.3);
+}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.85rem;letter-spacing:.2em;color:var(--gold);font-weight:700}
+.brand-icon{font-size:1.4rem;display:inline-block;filter:drop-shadow(0 0 10px rgba(244,168,186,.8))}
+.top__nav{display:flex;align-items:center;gap:1.5rem}
+.top__link{font-size:.85rem;font-weight:600;letter-spacing:.05em;color:var(--dim);transition:color .2s;position:relative}
+.top__link:hover,.top__link.active{color:var(--ember)}
+.top__link.active::after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+.btn-gold{
+  background:var(--gold);color:#FFFFFF;font-weight:700;font-size:.8rem;padding:.55rem 1.1rem;
+  border-radius:999px;letter-spacing:.05em;transition:all .2s;box-shadow:0 0 16px rgba(244,168,186,.45);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(244,168,186,.7);color:#FFFFFF}
+
+/* Hero */
+.hero{padding:2.5rem 0 1.5rem;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:999px;
+  background:rgba(244,168,186,.15);border:1px solid rgba(244,168,186,.5);color:var(--ember);
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;font-weight:700;
+}
+.hero-title{font-family:var(--disp);font-size:clamp(2.2rem,5vw,3.4rem);margin:0 0 .5rem;font-weight:400;color:var(--ivory)}
+.hero-title em{font-style:italic;color:var(--gold);font-family:var(--disp)}
+
+/* Game Container */
+.game-wrapper{
+  background:var(--card-bg);border:1px solid rgba(244,168,186,.4);border-radius:20px;
+  padding:1.5rem;box-shadow:0 20px 45px rgba(0,0,0,.08);position:relative;margin-bottom:3rem;
+}
+.game-hud{
+  display:flex;justify-content:space-between;align-items:center;padding:0 .5rem 1rem;
+  font-family:var(--mono);font-size:1.1rem;border-bottom:1px solid rgba(244,168,186,.25);color:var(--ivory);
+}
+.game-hud b{color:var(--ember)}
+.canvas-holder{position:relative;width:100%;max-width:800px;margin:1rem auto;background:#FBF8F9;border-radius:12px;overflow:hidden;border:1px solid rgba(244,168,186,.35)}
+canvas{display:block;width:100%;height:auto;background:radial-gradient(circle at 50% 30%, #FFF5F7 0%, #F5ECF0 100%)}
+
+.game-overlay{
+  position:absolute;inset:0;background:rgba(255,255,255,.92);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:2rem;border-radius:12px;
+}
+.game-overlay h2{font-family:var(--disp);font-size:2.4rem;color:var(--gold);margin:0 0 1rem}
+.game-overlay p{color:var(--dim);max-width:400px;margin:0 0 1.5rem}
+
+.touch-controls{display:none;justify-content:center;gap:1.5rem;margin-top:1rem}
+@media (hover:none) or (pointer:coarse){
+  .touch-controls{display:flex}
+}
+.ctrl-btn{
+  background:rgba(244,168,186,.25);border:1px solid var(--gold);color:var(--ember);
+  font-size:1.8rem;width:80px;height:60px;border-radius:12px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;user-select:none;
+}
+
+footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:center;color:var(--dim);font-size:.85rem;background:var(--bg2)}
+@media (max-width:768px){.top__nav{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/"><span class="brand-icon">🕹️</span> CATE ARCADE</a>
+  <nav class="top__nav">
+    <a class="top__link" href="/#l1">Story</a>
+    <a class="top__link" href="/learn">Learn</a>
+    <a class="top__link" href="/raids">Raids</a>
+    <a class="top__link active" href="/arcade">Arcade</a>
+    <a class="top__link" href="/studio">Studio</a>
+    <a class="top__link" href="/vocab">Vocab</a>
+  </nav>
+  <div class="top__actions">
+    <a class="btn-gold" href="https://pump.fun/coin/Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump" target="_blank" rel="noopener noreferrer">BUY $CATE</a>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="hero">
+    <div class="badge">RETRO ARCADE 1.0</div>
+    <h1 class="hero-title">Catch the Coins. <em>Survive 9 Lives.</em></h1>
+  </section>
+
+  <div class="game-wrapper">
+    <div class="game-hud">
+      <div>SCORE: <b id="hudScore">0</b></div>
+      <div>LIVES: <b id="hudLives">❤️❤️❤️❤️❤️❤️❤️❤️❤️</b></div>
+      <div>BEST: <b id="hudBest">0</b></div>
+    </div>
+
+    <div class="canvas-holder">
+      <canvas id="gameCanvas" width="800" height="500"></canvas>
+      <div class="game-overlay" id="startOverlay">
+        <h2>NINTH LIFE RUNNER</h2>
+        <p>Catch Golden $CATE coins (+100) & SOL diamonds (+250). Dodge red dump candles (-1 Life)!</p>
+        <button class="btn-gold" style="font-size:1rem;padding:.8rem 2rem;cursor:pointer" onclick="startGame()">START GAME 🚀</button>
+      </div>
+      <div class="game-overlay" id="gameOverOverlay" style="display:none">
+        <h2>GAME OVER</h2>
+        <p>All nine lives spent! Final Score: <b id="finalScore" style="color:var(--gold)">0</b></p>
+        <button class="btn-gold" style="font-size:1rem;padding:.8rem 2rem;cursor:pointer" onclick="startGame()">PLAY AGAIN 🔄</button>
+      </div>
+    </div>
+
+    <div class="touch-controls">
+      <button class="ctrl-btn" id="btnLeft" onmousedown="setMove(-1)" onmouseup="setMove(0)" ontouchstart="setMove(-1)" ontouchend="setMove(0)">◀</button>
+      <button class="ctrl-btn" id="btnRight" onmousedown="setMove(1)" onmouseup="setMove(0)" ontouchstart="setMove(1)" ontouchend="setMove(0)">▶</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="shell">
+    <p>© 2026 THE CATECOIN COMMUNITY · ARCADE BUILD 1.2 · THE NINTH LIFE</p>
+  </div>
+</footer>
+
+<script>
+var canvas = document.getElementById('gameCanvas');
+var ctx = canvas.getContext('2d');
+var score = 0;
+var lives = 9;
+var best = parseInt(localStorage.getItem('cate_highscore') || '0', 10);
+document.getElementById('hudBest').textContent = best;
+
+var player = { x: 370, y: 430, width: 60, height: 50, speed: 7, dir: 0 };
+var items = [];
+var particles = [];
+var gameRunning = false;
+var lastSpawn = 0;
+
+// Audio synth
+var audioCtx = null;
+function playSound(freq, type, dur){
+  try {
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+    var osc = audioCtx.createOscillator();
+    var gain = audioCtx.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + dur);
+  } catch(e){}
+}
+
+function updateHud(){
+  document.getElementById('hudScore').textContent = score;
+  var hearts = '';
+  for(var i=0; i<lives; i++) hearts += '❤️';
+  document.getElementById('hudLives').textContent = hearts || '💀';
+}
+
+function startGame(){
+  document.getElementById('startOverlay').style.display = 'none';
+  document.getElementById('gameOverOverlay').style.display = 'none';
+  score = 0;
+  lives = 9;
+  items = [];
+  particles = [];
+  player.x = 370;
+  updateHud();
+  gameRunning = true;
+  requestAnimationFrame(loop);
+}
+
+function setMove(d){
+  player.dir = d;
+}
+
+window.addEventListener('keydown', function(e){
+  if(e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') player.dir = -1;
+  if(e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') player.dir = 1;
+});
+window.addEventListener('keyup', function(e){
+  if((e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') && player.dir === -1) player.dir = 0;
+  if((e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') && player.dir === 1) player.dir = 0;
+});
+
+function spawnItem(){
+  var types = [
+    { kind: 'coin', symbol: '🪙', val: 100, speed: 3 + Math.random()*2 },
+    { kind: 'sol', symbol: '💎', val: 250, speed: 4 + Math.random()*2 },
+    { kind: 'fud', symbol: '🩸', val: -1, speed: 3.5 + Math.random()*2.5 }
+  ];
+  var rand = Math.random();
+  var chosen = rand < 0.55 ? types[0] : (rand < 0.75 ? types[1] : types[2]);
+  items.push({
+    x: Math.random() * (canvas.width - 40) + 10,
+    y: -30,
+    size: 32,
+    kind: chosen.kind,
+    symbol: chosen.symbol,
+    val: chosen.val,
+    speed: chosen.speed
+  });
+}
+
+function loop(t){
+  if(!gameRunning) return;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // Move player
+  player.x += player.dir * player.speed;
+  if(player.x < 10) player.x = 10;
+  if(player.x > canvas.width - player.width - 10) player.x = canvas.width - player.width - 10;
+
+  // Draw player (CATE Cat basket)
+  ctx.font = '42px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🐱', player.x + player.width/2, player.y + 36);
+
+  // Spawn items
+  if(t - lastSpawn > 550){
+    spawnItem();
+    lastSpawn = t;
+  }
+
+  // Update and draw items
+  for(var i = items.length - 1; i >= 0; i--){
+    var it = items[i];
+    it.y += it.speed;
+    ctx.font = '28px sans-serif';
+    ctx.fillText(it.symbol, it.x, it.y);
+
+    // Collision check
+    if(it.y > player.y && it.y < player.y + player.height && Math.abs(it.x - (player.x + player.width/2)) < 35){
+      if(it.kind === 'coin'){
+        score += it.val;
+        playSound(587.33, 'sine', 0.15); // D5
+      } else if(it.kind === 'sol'){
+        score += it.val;
+        playSound(880, 'triangle', 0.25); // A5
+      } else if(it.kind === 'fud'){
+        lives--;
+        playSound(150, 'sawtooth', 0.3);
+      }
+      updateHud();
+      items.splice(i, 1);
+      if(lives <= 0){
+        endGame();
+        return;
+      }
+      continue;
+    }
+
+    if(it.y > canvas.height + 40){
+      items.splice(i, 1);
+    }
+  }
+
+  requestAnimationFrame(loop);
+}
+
+function endGame(){
+  gameRunning = false;
+  if(score > best){
+    best = score;
+    localStorage.setItem('cate_highscore', best);
+    document.getElementById('hudBest').textContent = best;
+  }
+  document.getElementById('finalScore').textContent = score;
+  document.getElementById('gameOverOverlay').style.display = 'flex';
+}
+</script>
+</body>
+</html>

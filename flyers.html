@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CATE Flyers - Printable Guerrilla Art</title>
+<meta name="description" content="Download and print official CATE community flyers, QR code stickers, and street posters to spread the ninth life.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#FFFFFF;
+  --bg2:#FBF8F9;
+  --card-bg:#FFFFFF;
+  --ivory:#16131B;
+  --dim:#665D6F;
+  --gold:#F4A8BA;
+  --gold-soft:#F4A8BA;
+  --disp:"Newsreader",Georgia,serif;
+  --ui:"Space Grotesk",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+  --shell:min(1100px,calc(100% - 2.5rem));
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ivory);
+  font-family:var(--ui);font-size:16px;line-height:1.6;
+}
+a{color:inherit;text-decoration:none}
+.shell{width:var(--shell);margin-inline:auto}
+
+.top{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:1rem clamp(1rem,3vw,2rem);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(244,168,186,.3);
+}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.85rem;letter-spacing:.2em;color:var(--gold);font-weight:700}
+.top__nav{display:flex;align-items:center;gap:1.5rem}
+.top__link{font-size:.85rem;font-weight:600;color:var(--dim);transition:color .2s}
+.top__link:hover,.top__link.active{color:var(--gold)}
+.btn-gold{
+  background:var(--gold);color:#FFFFFF;font-weight:700;font-size:.8rem;padding:.55rem 1.1rem;
+  border-radius:999px;cursor:pointer;border:none;box-shadow:0 0 16px rgba(244,168,186,.45);
+}
+
+.hero{padding:3.5rem 0 2rem;text-align:center}
+.hero-title{font-family:var(--disp);font-size:clamp(2.3rem,5vw,3.6rem);margin:0 0 .5rem;color:var(--ivory)}
+
+.flyer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-bottom:4rem}
+.flyer-card{
+  background:#fff;color:#16131B;border-radius:12px;padding:2.5rem 2rem;border:1px solid rgba(244,168,186,.4);
+  box-shadow:0 15px 40px rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.flyer-card h3{font-family:var(--disp);font-size:2rem;margin:0 0 .5rem;color:#16131B}
+.flyer-card p{color:#665D6F;font-size:.95rem;margin-bottom:1.5rem}
+.qr-box{
+  width:160px;height:160px;background:#FBF8F9;color:#F4A8BA;border-radius:12px;border:2px solid #F4A8BA;
+  display:flex;align-items:center;justify-content:center;font-size:3.5rem;margin-bottom:1.5rem;
+}
+.ca-box{
+  background:#FBF8F9;padding:.6rem .8rem;border-radius:6px;font-family:var(--mono);
+  font-size:.72rem;word-break:break-all;margin-bottom:1.5rem;border:1px dashed #F4A8BA;color:#16131B;
+}
+
+@media print{
+  body{background:#fff;color:#000}
+  .top,footer,.hero,button{display:none !important}
+  .flyer-card{box-shadow:none;border:2px solid #000;page-break-inside:avoid;margin:2rem 0}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/"><span>📄</span> CATE FLYERS</a>
+  <nav class="top__nav">
+    <a class="top__link" href="/#l1">Story</a>
+    <a class="top__link" href="/learn">Learn</a>
+    <a class="top__link" href="/raids">Raids</a>
+    <a class="top__link" href="/arcade">Arcade</a>
+    <a class="top__link" href="/studio">Studio</a>
+    <a class="top__link" href="/vocab">Vocab</a>
+  </nav>
+  <div>
+    <button class="btn-gold" onclick="window.print()">🖨️ PRINT FLYERS</button>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="hero">
+    <h1 class="hero-title">Print &amp; Drop <em>Guerrilla Flyers</em></h1>
+    <p style="color:var(--dim);max-width:540px;margin:0 auto">Download high-contrast printable flyers for street stickers, university bulletin boards, and crypto meetups.</p>
+  </section>
+
+  <div class="flyer-grid">
+    <div class="flyer-card">
+      <div style="font-size:2.8rem;margin-bottom:.5rem">🐱⚡</div>
+      <h3>THE NINTH LIFE</h3>
+      <p>Eight lives were hers. The ninth is yours.<br>The official companion token on Solana.</p>
+      <div class="qr-box">📱</div>
+      <div class="ca-box">Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump</div>
+      <button class="btn-gold" onclick="window.print()">Print This Flyer</button>
+    </div>
+
+    <div class="flyer-card">
+      <div style="font-size:2.8rem;margin-bottom:.5rem">💎🐾</div>
+      <h3>DIAMOND PAWS ONLY</h3>
+      <p>Join the decentralized feline revolution.<br>Zero tax. Zero presales. 100% community.</p>
+      <div class="qr-box">🔗</div>
+      <div class="ca-box">https://cate.meme/</div>
+      <button class="btn-gold" onclick="window.print()">Print This Flyer</button>
+    </div>
+  </div>
+</main>
+
+<footer style="padding:2rem 0;text-align:center;color:var(--dim);border-top:1px solid rgba(242,185,46,.15)">
+  <div class="shell"><p>© 2026 THE CATECOIN COMMUNITY · PRINTABLES · THE NINTH LIFE</p></div>
+</footer>
+</body>
+</html>

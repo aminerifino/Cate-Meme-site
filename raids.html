@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CATE Raids Command Center - The Ninth Life</title>
+<meta name="description" content="Join the CATE community raids. Copy ready-to-post tweet templates, download meme assets, and rally the community on X.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#FFFFFF;
+  --bg2:#FBF8F9;
+  --card-bg:#FFFFFF;
+  --ivory:#16131B;
+  --dim:#665D6F;
+  --gold:#F4A8BA;
+  --gold-soft:#F4A8BA;
+  --ember:#E06085;
+  --disp:"Newsreader",Georgia,serif;
+  --word:"Cinzel",Georgia,serif;
+  --ui:"Space Grotesk",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+  --shell:min(1140px,calc(100% - 2.5rem));
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ivory);
+  font-family:var(--ui);font-size:16px;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.shell{width:var(--shell);margin-inline:auto}
+
+/* Top Navigation */
+.top{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:1rem clamp(1rem,3vw,2rem);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(244,168,186,.3);
+}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.85rem;letter-spacing:.2em;color:var(--gold);font-weight:700}
+.brand-icon{font-size:1.4rem;display:inline-block;filter:drop-shadow(0 0 10px rgba(244,168,186,.8))}
+.top__nav{display:flex;align-items:center;gap:1.5rem}
+.top__link{font-size:.85rem;font-weight:600;letter-spacing:.05em;color:var(--dim);transition:color .2s;position:relative}
+.top__link:hover,.top__link.active{color:var(--ember)}
+.top__link.active::after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+.btn-gold{
+  background:var(--gold);color:#FFFFFF;font-weight:700;font-size:.8rem;padding:.55rem 1.1rem;
+  border-radius:999px;letter-spacing:.05em;transition:all .2s;box-shadow:0 0 16px rgba(244,168,186,.45);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(244,168,186,.7);color:#FFFFFF}
+
+/* Hero */
+.hero{padding:3.5rem 0 2.5rem;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:999px;
+  background:rgba(244,168,186,.15);border:1px solid rgba(244,168,186,.5);color:var(--ember);
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem;font-weight:700;
+}
+.hero-title{font-family:var(--disp);font-size:clamp(2.3rem,5vw,3.6rem);margin:0 0 .8rem;font-weight:400;color:var(--ivory)}
+.hero-title em{font-style:italic;color:var(--gold);font-family:var(--disp)}
+.hero-sub{max-width:620px;margin:0 auto 2rem;color:var(--dim)}
+
+/* Raid Counter Bar */
+.stats-bar{
+  display:flex;justify-content:space-around;background:var(--card-bg);border:1px solid rgba(244,168,186,.35);
+  border-radius:14px;padding:1.2rem;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.04);
+}
+.stat-item b{display:block;font-size:1.8rem;color:var(--ember);font-family:var(--mono)}
+.stat-item span{font-size:.78rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+
+/* Raid Cards */
+.raid-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:3.5rem}
+.raid-card{
+  background:var(--card-bg);border:1px solid rgba(244,168,186,.35);border-radius:16px;padding:1.8rem;
+  display:flex;flex-direction:column;gap:1rem;box-shadow:0 10px 30px rgba(0,0,0,.04);
+}
+.raid-card-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.raid-tag{font-family:var(--mono);font-size:.75rem;color:var(--ember);background:rgba(244,168,186,.15);padding:.3rem .7rem;border-radius:6px;font-weight:700}
+.raid-title{font-size:1.25rem;font-weight:700;margin:0;color:var(--ivory)}
+.raid-snippet{
+  background:rgba(251,248,249,.95);border:1px solid rgba(244,168,186,.3);border-radius:10px;padding:1.2rem;
+  font-family:var(--ui);font-size:.95rem;line-height:1.6;color:var(--ivory);position:relative;
+}
+.raid-actions{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.action-btn{
+  display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.2rem;border-radius:8px;
+  font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;border:none;
+}
+.action-btn.copy{background:rgba(244,168,186,.2);color:var(--ember);border:1px solid rgba(244,168,186,.45)}
+.action-btn.copy:hover{background:var(--gold);color:#FFFFFF}
+.action-btn.tweet{background:#1d9bf0;color:#fff}
+.action-btn.tweet:hover{background:#0c85d0;transform:translateY(-2px)}
+
+footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:center;color:var(--dim);font-size:.85rem;background:var(--bg2)}
+@media (max-width:768px){.top__nav{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/"><span class="brand-icon">⚔️</span> $CATE RAIDS</a>
+  <nav class="top__nav">
+    <a class="top__link" href="/#l1">Story</a>
+    <a class="top__link" href="/learn">Learn</a>
+    <a class="top__link active" href="/raids">Raids</a>
+    <a class="top__link" href="/arcade">Arcade</a>
+    <a class="top__link" href="/studio">Studio</a>
+    <a class="top__link" href="/vocab">Vocab</a>
+  </nav>
+  <div class="top__actions">
+    <a class="btn-gold" href="https://x.com/CateonSol_" target="_blank" rel="noopener noreferrer">OFFICIAL X ↗</a>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="hero">
+    <div class="badge">LIVE RAID COMMAND CENTER</div>
+    <h1 class="hero-title">Unleash the <em>Ninth Life</em> on X</h1>
+    <p class="hero-sub">Coordinate community momentum. 1-click copy verified raid copy, amplify tweets, and spread $CATE across Solana crypto Twitter.</p>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <b id="raidCounter">1,420+</b>
+      <span>Raids Executed Today</span>
+    </div>
+    <div class="stat-item">
+      <b>Ai66...pump</b>
+      <span>Verified Solana CA</span>
+    </div>
+    <div class="stat-item">
+      <b>100%</b>
+      <span>Community Owned</span>
+    </div>
+  </div>
+
+  <div class="raid-grid">
+    <!-- Raid Template 1 -->
+    <div class="raid-card">
+      <div class="raid-card-head">
+        <span class="raid-tag">MISSION #01 · LORE & ORIGIN</span>
+        <span style="font-size:.8rem;color:var(--dim)">Target: Crypto Twitter / Solana Alpha callers</span>
+      </div>
+      <h3 class="raid-title">The Doge Creator's Feline Companion</h3>
+      <div class="raid-snippet" id="snip1">
+Eight lives were hers. The ninth is yours. 🐱✨
+
+Meet $CATE — the legendary feline companion of the Dogecoin legacy, now live on Solana with a pure community-driven fair launch.
+
+Verify CA: Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump
+#CATE #Solana #DogeSister #CryptoMeme
+      </div>
+      <div class="raid-actions">
+        <button class="action-btn copy" onclick="copySnippet('snip1', this)">📋 Copy Text</button>
+        <a class="action-btn tweet" href="https://twitter.com/intent/tweet?text=Eight%20lives%20were%20hers.%20The%20ninth%20is%20yours.%20%F0%9F%90%B1%E2%9C%A8%0A%0AMeet%20%24CATE%20on%20Solana%20%E2%80%94%20fair%20launched%20and%20community%20powered.%0A%0ACA%3A%20Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump%0A%23CATE%20%23Solana%20%23MemeCoin" target="_blank" rel="noopener noreferrer" onclick="incrementRaid()">🚀 Post to X</a>
+      </div>
+    </div>
+
+    <!-- Raid Template 2 -->
+    <div class="raid-card">
+      <div class="raid-card-head">
+        <span class="raid-tag">MISSION #02 · FAIR LAUNCH ALPHA</span>
+        <span style="font-size:.8rem;color:var(--dim)">Target: Pump.fun & Moonshot Traders</span>
+      </div>
+      <h3 class="raid-title">No Presales. No VC Tricks. 100% On-Chain</h3>
+      <div class="raid-snippet" id="snip2">
+Clean chart, zero insider tricks, and authentic viral meme history. 📈🐾
+
+If you missed early meme giants, $CATE is the genuine ninth life on Solana.
+Contract: Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump
+
+Check on DEXScreener & Solscan! #CATE #SolanaGems #WAGMI
+      </div>
+      <div class="raid-actions">
+        <button class="action-btn copy" onclick="copySnippet('snip2', this)">📋 Copy Text</button>
+        <a class="action-btn tweet" href="https://twitter.com/intent/tweet?text=Clean%20chart%2C%20zero%20insider%20tricks%2C%20and%20authentic%20viral%20meme%20history.%20%F0%9F%93%88%F0%9F%90%BE%0A%0A%24CATE%20on%20Solana%3A%20Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump%0A%0A%23CATE%20%23SolanaGems%20%23WAGMI" target="_blank" rel="noopener noreferrer" onclick="incrementRaid()">🚀 Post to X</a>
+      </div>
+    </div>
+
+    <!-- Raid Template 3 -->
+    <div class="raid-card">
+      <div class="raid-card-head">
+        <span class="raid-tag">MISSION #03 · MEME STUDIO DROP</span>
+        <span style="font-size:.8rem;color:var(--dim)">Target: Visual Meme Raids & Threads</span>
+      </div>
+      <h3 class="raid-title">Custom PFP & Laser Eyes Raid</h3>
+      <div class="raid-snippet" id="snip3">
+Put on the laser eyes. Equip the golden crown. The ninth life is here. 👑⚡
+
+Generated my custom $CATE PFP in the official studio: https://cate.meme/studio
+Join the feline uprising on Solana: CA Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump
+      </div>
+      <div class="raid-actions">
+        <button class="action-btn copy" onclick="copySnippet('snip3', this)">📋 Copy Text</button>
+        <a class="action-btn tweet" href="https://twitter.com/intent/tweet?text=Put%20on%20the%20laser%20eyes.%20Equip%20the%20golden%20crown.%20The%20ninth%20life%20is%20here.%20%F0%9F%91%91%E2%9A%A1%0A%0A%24CATE%20on%20Solana%3A%20Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump%0A%23CATE%20%23Solana" target="_blank" rel="noopener noreferrer" onclick="incrementRaid()">🚀 Post to X</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="shell">
+    <p>© 2026 THE CATECOIN COMMUNITY · RAIDS HUB 1.2 · THE NINTH LIFE</p>
+  </div>
+</footer>
+
+<script>
+function copySnippet(id, btn){
+  var el = document.getElementById(id);
+  var text = el.innerText.trim();
+  navigator.clipboard.writeText(text).then(function(){
+    var old = btn.innerHTML;
+    btn.innerHTML = 'COPIED ✓';
+    btn.style.background = '#2ecc71';
+    btn.style.color = '#fff';
+    setTimeout(function(){
+      btn.innerHTML = old;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+    incrementRaid();
+  });
+}
+
+function incrementRaid(){
+  var count = parseInt(localStorage.getItem('cate_raids') || '1420', 10) + 1;
+  localStorage.setItem('cate_raids', count);
+  document.getElementById('raidCounter').textContent = count.toLocaleString() + '+';
+}
+</script>
+</body>
+</html>

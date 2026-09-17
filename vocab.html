@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CATE Vocab - Crypto & Degen Dictionary</title>
+<meta name="description" content="Decode crypto jargon and Solana slang with the official CATE vocabulary guide. From Bonding Curves to Paper Hands.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#FFFFFF;
+  --bg2:#FBF8F9;
+  --card-bg:#FFFFFF;
+  --ivory:#16131B;
+  --dim:#665D6F;
+  --gold:#F4A8BA;
+  --gold-soft:#F4A8BA;
+  --ember:#E06085;
+  --disp:"Newsreader",Georgia,serif;
+  --word:"Cinzel",Georgia,serif;
+  --ui:"Space Grotesk",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+  --shell:min(1140px,calc(100% - 2.5rem));
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ivory);
+  font-family:var(--ui);font-size:16px;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.shell{width:var(--shell);margin-inline:auto}
+
+/* Top Navigation */
+.top{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:1rem clamp(1rem,3vw,2rem);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(244,168,186,.3);
+}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.85rem;letter-spacing:.2em;color:var(--gold);font-weight:700}
+.brand-icon{font-size:1.4rem;display:inline-block;filter:drop-shadow(0 0 10px rgba(244,168,186,.8))}
+.top__nav{display:flex;align-items:center;gap:1.5rem}
+.top__link{font-size:.85rem;font-weight:600;letter-spacing:.05em;color:var(--dim);transition:color .2s;position:relative}
+.top__link:hover,.top__link.active{color:var(--ember)}
+.top__link.active::after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+.btn-gold{
+  background:var(--gold);color:#FFFFFF;font-weight:700;font-size:.8rem;padding:.55rem 1.1rem;
+  border-radius:999px;letter-spacing:.05em;transition:all .2s;box-shadow:0 0 16px rgba(244,168,186,.45);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(244,168,186,.7);color:#FFFFFF}
+
+/* Hero & Search */
+.hero{padding:3.5rem 0 2rem;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:999px;
+  background:rgba(244,168,186,.15);border:1px solid rgba(244,168,186,.5);color:var(--ember);
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;font-weight:700;
+}
+.hero-title{font-family:var(--disp);font-size:clamp(2.3rem,5vw,3.6rem);margin:0 0 .5rem;font-weight:400;color:var(--ivory)}
+.hero-title em{font-style:italic;color:var(--gold);font-family:var(--disp)}
+
+.search-box{max-width:540px;margin:1.5rem auto 2rem;position:relative}
+.search-input{
+  width:100%;padding:1rem 1.4rem;border-radius:14px;background:var(--card-bg);
+  border:1px solid rgba(244,168,186,.4);color:var(--ivory);font-size:1rem;font-family:var(--ui);
+  outline:none;transition:border-color .2s;box-shadow:0 10px 30px rgba(0,0,0,.04);
+}
+.search-input:focus{border-color:var(--gold);box-shadow:0 0 20px rgba(244,168,186,.3)}
+
+/* Category Filters */
+.filters{display:flex;justify-content:center;gap:.6rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.filter-btn{
+  background:rgba(244,168,186,.1);border:1px solid rgba(244,168,186,.3);color:var(--dim);
+  padding:.45rem .95rem;border-radius:999px;font-size:.85rem;cursor:pointer;transition:all .2s;
+}
+.filter-btn.active,.filter-btn:hover{background:var(--gold);color:#FFFFFF;border-color:var(--gold);font-weight:600}
+
+/* Grid */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-bottom:4rem}
+.vocab-card{
+  background:var(--card-bg);border:1px solid rgba(244,168,186,.35);border-radius:14px;padding:1.6rem;
+  transition:all .2s;box-shadow:0 10px 30px rgba(0,0,0,.04);
+}
+.vocab-card:hover{border-color:rgba(244,168,186,.8);transform:translateY(-2px);box-shadow:0 15px 35px rgba(244,168,186,.15)}
+.vocab-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
+.vocab-term{font-size:1.3rem;font-weight:700;color:var(--ember);font-family:var(--mono)}
+.vocab-cat{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.vocab-def{color:var(--ivory);font-size:.92rem;line-height:1.55}
+
+footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:center;color:var(--dim);font-size:.85rem;background:var(--bg2)}
+@media (max-width:768px){.top__nav{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/"><span class="brand-icon">📖</span> CATE VOCAB</a>
+  <nav class="top__nav">
+    <a class="top__link" href="/#l1">Story</a>
+    <a class="top__link" href="/learn">Learn</a>
+    <a class="top__link" href="/raids">Raids</a>
+    <a class="top__link" href="/arcade">Arcade</a>
+    <a class="top__link" href="/studio">Studio</a>
+    <a class="top__link active" href="/vocab">Vocab</a>
+  </nav>
+  <div class="top__actions">
+    <a class="btn-gold" href="https://pump.fun/coin/Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump" target="_blank" rel="noopener noreferrer">BUY $CATE</a>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="hero">
+    <div class="badge">DEGEN DICTIONARY 1.0</div>
+    <h1 class="hero-title">Decode the <em>Language of Solana</em></h1>
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchBar" placeholder="Search any crypto term (e.g. HODL, CA, Bonding Curve)..." oninput="filterTerms()">
+    </div>
+    <div class="filters">
+      <button class="filter-btn active" onclick="setCategory('all', this)">All (12)</button>
+      <button class="filter-btn" onclick="setCategory('basics', this)">Basics</button>
+      <button class="filter-btn" onclick="setCategory('trading', this)">Trading & Charts</button>
+      <button class="filter-btn" onclick="setCategory('slang', this)">Degen Slang</button>
+    </div>
+  </section>
+
+  <div class="vocab-grid" id="vocabContainer">
+    <div class="vocab-card" data-cat="basics">
+      <div class="vocab-head"><span class="vocab-term">CA (Contract Address)</span><span class="vocab-cat">Basics</span></div>
+      <p class="vocab-def">The unique cryptographic identifier on Solana for a token mint. $CATE's official CA is Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="trading">
+      <div class="vocab-head"><span class="vocab-term">Bonding Curve</span><span class="vocab-cat">Trading</span></div>
+      <p class="vocab-def">An automated mathematical pricing curve used by launchpads like Pump.fun where price increases predictably as tokens are purchased until market graduation.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="slang">
+      <div class="vocab-head"><span class="vocab-term">HODL</span><span class="vocab-cat">Slang</span></div>
+      <p class="vocab-def">"Hold On for Dear Life" — refusing to sell your tokens during market volatility because of long-term conviction.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="slang">
+      <div class="vocab-head"><span class="vocab-term">Diamond Paws 🐾</span><span class="vocab-cat">Slang</span></div>
+      <p class="vocab-def">The feline evolution of Diamond Hands. Unshakable holders who hold through every dip to reach the ninth life.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="trading">
+      <div class="vocab-head"><span class="vocab-term">Market Cap (MCap)</span><span class="vocab-cat">Trading</span></div>
+      <p class="vocab-def">Total supply of tokens multiplied by current token price. Represents the total valuation of the ecosystem.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="basics">
+      <div class="vocab-head"><span class="vocab-term">Seed Phrase</span><span class="vocab-cat">Basics</span></div>
+      <p class="vocab-def">A sequence of 12 or 24 words that acts as the master key to your wallet. If anyone gets it, they own your funds. Never share it.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="slang">
+      <div class="vocab-head"><span class="vocab-term">WAGMI</span><span class="vocab-cat">Slang</span></div>
+      <p class="vocab-def">"We're All Gonna Make It" — community rally cry celebrating solidarity, optimism, and shared victory in the meme economy.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="trading">
+      <div class="vocab-head"><span class="vocab-term">DEX (Decentralized Exchange)</span><span class="vocab-cat">Trading</span></div>
+      <p class="vocab-def">A peer-to-peer marketplace (like Raydium or Pump.fun) where swaps occur on-chain without an intermediary bank or broker.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="slang">
+      <div class="vocab-head"><span class="vocab-term">Raid</span><span class="vocab-cat">Slang</span></div>
+      <p class="vocab-def">Coordinated community action on social media (especially X) to like, retweet, and reply to raise token awareness.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="basics">
+      <div class="vocab-head"><span class="vocab-term">Non-Custodial</span><span class="vocab-cat">Basics</span></div>
+      <p class="vocab-def">Wallets like Phantom where you solely control private keys, rather than trusting a centralized exchange.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="trading">
+      <div class="vocab-head"><span class="vocab-term">Slippage</span><span class="vocab-cat">Trading</span></div>
+      <p class="vocab-def">The difference between the expected price of a trade and the executed price due to rapid on-chain price movements.</p>
+    </div>
+
+    <div class="vocab-card" data-cat="slang">
+      <div class="vocab-head"><span class="vocab-term">The Ninth Life</span><span class="vocab-cat">Slang</span></div>
+      <p class="vocab-def">The legendary community-driven renaissance of Cate on Solana. Eight lives were hers; the ninth is yours.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="shell">
+    <p>© 2026 THE CATECOIN COMMUNITY · VOCAB DICTIONARY 1.2 · THE NINTH LIFE</p>
+  </div>
+</footer>
+
+<script>
+var currentCategory = 'all';
+
+function setCategory(cat, btn){
+  currentCategory = cat;
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  filterTerms();
+}
+
+function filterTerms(){
+  var query = document.getElementById('searchBar').value.toLowerCase();
+  var cards = document.querySelectorAll('.vocab-card');
+  cards.forEach(function(card){
+    var cat = card.getAttribute('data-cat');
+    var text = card.innerText.toLowerCase();
+    var matchCat = (currentCategory === 'all' || cat === currentCategory);
+    var matchQuery = text.indexOf(query) !== -1;
+    card.style.display = (matchCat && matchQuery) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>
