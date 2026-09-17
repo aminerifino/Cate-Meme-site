@@ -9,6 +9,21 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.static(__dirname));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+
+// API Proxy for live DexScreener token statistics
+app.get('/api/stats', async (req, res) => {
+  const PAIR = 'hmzvseemtzhhvznw9uwbag85hctmfnkbhzux16cy7ca3';
+  try {
+    const response = await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${PAIR}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    res.json(data);
+  } catch (err) {
+    res.status(502).json({ error: 'Failed to fetch pair stats' });
+  }
+});
 
 // Express Router Navigation Routes
 app.get('/', (req, res) => {

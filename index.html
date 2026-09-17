@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CATECOIN - The Ninth Life</title>
 <meta name="description" content="$CATE on Solana. Eight lives were hers. The ninth is yours.">
-<<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light">
 <meta property="og:title" content="CATECOIN - The Ninth Life">
 <meta property="og:description" content="Eight lives were hers. The ninth is yours. $CATE on Solana.">
@@ -239,6 +239,7 @@ body.scrolled .hint{opacity:0}
 .lines .ln:nth-child(3)>span{transition-delay:.16s}
 .lines .ln:nth-child(4)>span{transition-delay:.24s}
 
+#l2 .wrap{min-height:115vh;min-height:115svh;padding:8rem 0}
 #l1 .wrap{align-items:center;text-align:center}
 .h-title{
   font-family:var(--word);font-weight:700;
@@ -642,7 +643,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life tall" id="l5" data-l="5" data-morph="dust" data-scrub>
+<section class="life tall" id="l5" data-l="5" data-morph="puppy" data-scrub>
   <div class="wrap">
     <div class="scene">
       <div class="iris" data-iris>
@@ -656,7 +657,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life" id="l6" data-l="6" data-morph="cat">
+<section class="life" id="l6" data-l="6" data-morph="puppy">
   <div class="wrap shell reveal">
     <p class="num">Life VI - The Law</p>
     <p class="omen lines">
@@ -789,45 +790,94 @@ body.scrolled .hint{opacity:0}
       W=cv.width=Math.floor(innerWidth*dpr);
       H=cv.height=Math.floor(innerHeight*dpr);
       cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
-      N=Math.floor(Math.min(coarse?700:2600,Math.max(coarse?260:700,innerWidth*innerHeight/(coarse?2600:650))));
+      N=Math.floor(Math.min(coarse?1400:4600,Math.max(coarse?500:1600,innerWidth*innerHeight/(coarse?1400:320))));
       while(parts.length<N)parts.push(mk());
       parts.length=N;
       buildTargets(mode,true);
     }
     function mk(){
       return {x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,
-              tx:0,ty:0,sz:(Math.random()*1.6+0.7)*dpr,al:Math.random()*.5+.4,
+              tx:0,ty:0,sz:(Math.random()*1.5+0.6)*dpr,al:Math.random()*.5+.4,
               ph:Math.random()*Math.PI*2,free:Math.random()};
     }
 
     function sampleCanvasShape(draw,count){
-      var S=340,oc=document.createElement('canvas');oc.width=oc.height=S;
-      var o=oc.getContext('2d');o.fillStyle='#fff';o.strokeStyle='#fff';
+      var S=380,oc=document.createElement('canvas');oc.width=oc.height=S;
+      var o=oc.getContext('2d');
       draw(o,S);
       var data=o.getImageData(0,0,S,S).data,pts=[];
-      for(var y=0;y<S;y+=3)for(var x=0;x<S;x+=3){
-        if(data[(y*S+x)*4+3]>128)pts.push([x/S-.5,y/S-.5]);
+      for(var y=0;y<S;y++){
+        for(var x=0;x<S;x++){
+          var a=data[(y*S+x)*4+3];
+          if(a>30){
+            pts.push([x/S-.5,y/S-.5]);
+          }
+        }
       }
       if(!pts.length)return null;
       var out=[];for(var i=0;i<count;i++)out.push(pts[(Math.random()*pts.length)|0]);
       return out;
     }
-    function shapePaw(o,S){
-      var u=S/100;
-      o.beginPath();o.ellipse(50*u,64*u,21*u,17*u,0,0,7);o.fill();
-      [[27,36,9],[43,26,9],[60,27,9],[73,40,8]].forEach(function(c){
-        o.beginPath();o.arc(c[0]*u,c[1]*u,c[2]*u,0,7);o.fill();
-      });
+    function puppyPawPts(count){
+      var d = [
+        'M 50 48 C 65 48, 76 57, 75 70 C 74 80, 62 85, 50 81 C 38 85, 26 80, 25 70 C 24 57, 35 48, 50 48 Z',
+        'M 23 34 C 28 34, 31 39, 31 46 C 31 53, 28 57, 23 57 C 18 57, 15 53, 15 46 C 15 39, 18 34, 23 34 Z',
+        'M 41 18 C 46 18, 49 24, 49 31 C 49 38, 46 43, 41 43 C 36 43, 33 38, 33 31 C 33 24, 36 18, 41 18 Z',
+        'M 59 18 C 64 18, 67 24, 67 31 C 67 38, 64 43, 59 43 C 54 43, 51 38, 51 31 C 51 24, 54 18, 59 18 Z',
+        'M 77 34 C 82 34, 85 39, 85 46 C 85 53, 82 57, 77 57 C 72 57, 69 53, 69 46 C 69 39, 72 34, 77 34 Z'
+      ].join(' ');
+      var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d',d);
+      var total=path.getTotalLength(),out=[];
+      for(var i=0;i<count;i++){
+        var dist=((i/count)*total+Math.random()*0.3)%total;
+        var pt=path.getPointAtLength(dist);
+        var jx=((i%7===0)?(Math.random()-.5)*.02:(Math.random()-.5)*.008);
+        var jy=((i%7===0)?(Math.random()-.5)*.02:(Math.random()-.5)*.008);
+        out.push([(pt.x-50)/100*0.88+jx,(pt.y-50)/100*0.88+jy]);
+      }
+      return out;
     }
-    function shapeCat(o,S){
-      var u=S/100;
-      o.beginPath();o.arc(50*u,58*u,26*u,0,7);o.fill();
-      o.beginPath();o.moveTo(28*u,42*u);o.lineTo(24*u,16*u);o.lineTo(45*u,34*u);o.closePath();o.fill();
-      o.beginPath();o.moveTo(72*u,42*u);o.lineTo(76*u,16*u);o.lineTo(55*u,34*u);o.closePath();o.fill();
-      o.globalCompositeOperation='destination-out';
-      o.beginPath();o.arc(41*u,56*u,4.5*u,0,7);o.fill();
-      o.beginPath();o.arc(59*u,56*u,4.5*u,0,7);o.fill();
-      o.globalCompositeOperation='source-over';
+    function puppyHeadPts(count){
+      var d = [
+        // 1. Outer head, crown, floppy drop ears, cheek fluff tufts, and chin
+        'M 50 15 L 53 17 L 56 16 L 60 20 L 68 21 C 80 21, 92 27, 96 34 C 95 42, 90 49, 82 54 C 77 52, 75 46, 76 41 L 77 51 L 80 56 L 75 60 L 79 65 L 74 71 L 76 76 L 70 80 C 62 87, 57 89, 50 89 C 43 89, 38 87, 30 80 L 24 76 L 26 71 L 21 65 L 25 60 L 20 56 L 23 51 C 24 46, 22 52, 18 54 C 10 49, 5 42, 4 34 C 8 27, 20 21, 32 21 L 40 20 L 44 16 L 47 17 Z',
+        // 2. Left and Right Inner Ear Fold Creases
+        'M 27 24 C 16 26, 9 32, 6 35 C 8 44, 14 50, 19 51 C 22 45, 24 35, 27 24',
+        'M 73 24 C 84 26, 91 32, 94 35 C 92 44, 86 50, 81 51 C 78 45, 76 35, 73 24',
+        // 3. Eyebrow fur markings
+        'M 28 35 C 33 31, 39 32, 43 36',
+        'M 72 35 C 67 31, 61 32, 57 36',
+        // 4. Forehead and eye mask contour lines
+        'M 43 24 C 40 31, 33 37, 27 44 C 23 51, 24 59, 27 67',
+        'M 57 24 C 60 31, 67 37, 73 44 C 77 51, 76 59, 73 67',
+        // 5. Muzzle outline arch
+        'M 50 50 C 42 52, 35 59, 35 69 C 35 77, 42 83, 50 84 C 58 83, 65 77, 65 69 C 65 52, 58 52, 50 50 Z',
+        // 6. Round puppy eyes and highlights
+        'M 35.5 39 A 6 6 0 1 1 35.49 39',
+        'M 64.5 39 A 6 6 0 1 1 64.49 39',
+        'M 37.5 41 A 2 2 0 1 1 37.49 41',
+        'M 66.5 41 A 2 2 0 1 1 66.49 41',
+        // 7. Button nose outline
+        'M 50 56.5 C 44 56.5, 43.5 61, 44 63 C 45.5 65.5, 48 66, 50 66 C 52 66, 54.5 65.5, 56 63 C 56.5 61, 56 56.5, 50 56.5 Z',
+        // 8. Puppy "w" smile
+        'M 50 66 L 50 69.5',
+        'M 50 69.5 C 46 73.5, 41 72.5, 39 66',
+        'M 50 69.5 C 54 73.5, 59 72.5, 61 66'
+      ].join(' ');
+
+      var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d',d);
+      var total=path.getTotalLength(),out=[];
+      for(var i=0;i<count;i++){
+        var dist=((i/count)*total+Math.random()*0.3)%total;
+        var pt=path.getPointAtLength(dist);
+        // Clean, continuous line density with subtle natural shimmer identical to ringPts
+        var jx=((i%7===0)?(Math.random()-.5)*.02:(Math.random()-.5)*.008);
+        var jy=((i%7===0)?(Math.random()-.5)*.02:(Math.random()-.5)*.008);
+        out.push([(pt.x-50)/100*0.88+jx,(pt.y-50)/100*0.88+jy]);
+      }
+      return out;
     }
     function shapeNine(o,S){
       o.font='700 '+ (S*0.92) +'px "Newsreader", Georgia, serif';
@@ -848,8 +898,8 @@ body.scrolled .hint{opacity:0}
       var key=kind+':'+count;
       if(key in cache)return cache[key];
       var pts;
-      if(kind==='paw')pts=sampleCanvasShape(shapePaw,count);
-      else if(kind==='cat')pts=sampleCanvasShape(shapeCat,count);
+      if(kind==='paw'||kind==='puppypaw'||kind==='dogpaw')pts=puppyPawPts(count);
+      else if(kind==='cat'||kind==='puppy'||kind==='dog'||kind==='golden')pts=puppyHeadPts(count);
       else if(kind==='nine')pts=sampleCanvasShape(shapeNine,count);
       else if(kind==='ring')pts=ringPts(count);
       else pts=null;
@@ -883,8 +933,8 @@ body.scrolled .hint{opacity:0}
         var ax=0,ay=0;
         var tg=drift?null:targets[i];
         if(tg){
-          ax=(tg[0]-p.x)*0.005;
-          ay=(tg[1]-p.y)*0.005;
+          ax=(tg[0]-p.x)*0.016;
+          ay=(tg[1]-p.y)*0.016;
         }else{
           ax=Math.cos(t*.2+p.ph)*.018*dpr;
           ay=Math.sin(t*.18+p.ph*1.3)*.018*dpr + (dusty?.004*dpr:0);
@@ -900,15 +950,15 @@ body.scrolled .hint{opacity:0}
           var bx=p.x-W/2,by=p.y-H/2,bd=Math.sqrt(bx*bx+by*by)||1;
           ax+=bx/bd*burstT*1.2*dpr;ay+=by/bd*burstT*1.2*dpr;
         }
-        p.vx=(p.vx+ax)*.92;p.vy=(p.vy+ay)*.92;
-        p.x+=p.vx*0.45;p.y+=p.vy*0.45;
+        p.vx=(p.vx+ax)*(drift?.92:.85);p.vy=(p.vy+ay)*(drift?.92:.85);
+        p.x+=p.vx*0.60;p.y+=p.vy*0.60;
         if(drift){
           if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;
           if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;
         }
-        var tw=.6+.4*Math.sin(t*1.2+p.ph);
-        var s=p.sz*7*tw;
-        ctx.globalAlpha=p.al*(drift?.55:.85)*tw;
+        var tw=.65+.35*Math.sin(t*1.2+p.ph);
+        var s=p.sz*(drift?6.2:4.2)*tw;
+        ctx.globalAlpha=p.al*(drift?.55:.92)*tw;
         ctx.drawImage(sp,p.x-s/2,p.y-s/2,s,s);
       }
       if(burstT>0)burstT*=.93;
@@ -949,10 +999,44 @@ body.scrolled .hint{opacity:0}
     var navLinks={};
     document.querySelectorAll('.lives-nav a').forEach(function(a){navLinks[a.getAttribute('data-l')]=a;});
     var irises=[].slice.call(document.querySelectorAll('[data-scrub]'));
+    var currentActiveSec=null;
+
+    function updateActiveSection(){
+      var activeSec=null;
+      var r2=lifeSecs[1]?lifeSecs[1].getBoundingClientRect():null;
+      if(scrollY<=50){
+        activeSec=lifeSecs[0];
+      }else if(r2 && r2.top<=innerHeight*0.82 && r2.bottom>innerHeight*0.40){
+        activeSec=lifeSecs[1];
+      }else{
+        var vFocus=innerHeight*0.45;
+        for(var i=0;i<lifeSecs.length;i++){
+          var sec=lifeSecs[i];
+          var r=sec.getBoundingClientRect();
+          if(r.top<=vFocus && r.bottom>vFocus){
+            activeSec=sec;
+            break;
+          }
+        }
+      }
+      if(!activeSec&&lifeSecs.length){
+        if(lifeSecs[0].getBoundingClientRect().top>0) activeSec=lifeSecs[0];
+        else activeSec=lifeSecs[lifeSecs.length-1];
+      }
+      if(activeSec&&activeSec!==currentActiveSec){
+        currentActiveSec=activeSec;
+        var l=activeSec.getAttribute('data-l');
+        Object.keys(navLinks).forEach(function(k){navLinks[k].classList.toggle('on',k===l);});
+        var m=activeSec.getAttribute('data-morph')||'drift';
+        FX.setMorph(m);
+      }
+    }
+
     function onScroll(){
       var max=document.documentElement.scrollHeight-innerHeight;
       prog.style.width=(max>0?(scrollY/max*100):0)+'%';
       if(scrollY>40)document.body.classList.add('scrolled');
+      updateActiveSection();
       irises.forEach(function(sec){
         var r=sec.getBoundingClientRect();
         var total=sec.offsetHeight-innerHeight;
@@ -972,18 +1056,31 @@ body.scrolled .hint{opacity:0}
     }
     addEventListener('scroll',onScroll,{passive:true});
     onScroll();
-    if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(es){
-        es.forEach(function(e){
-          if(e.isIntersecting){
-            var l=e.target.getAttribute('data-l');
-            Object.keys(navLinks).forEach(function(k){navLinks[k].classList.toggle('on',k===l);});
-            FX.setMorph(e.target.getAttribute('data-morph')||'drift');
+
+    lifeSecs.forEach(function(s){
+      s.addEventListener('mouseenter',function(){
+        var m=s.getAttribute('data-morph');
+        if(m&&s===currentActiveSec)FX.setMorph(m);
+      });
+    });
+    document.querySelectorAll('.lives-nav a').forEach(function(a){
+      a.addEventListener('mouseenter',function(){
+        var targetId=a.getAttribute('href');
+        if(targetId&&targetId.charAt(0)==='#'){
+          var sec=document.querySelector(targetId);
+          if(sec){
+            var m=sec.getAttribute('data-morph');
+            if(m)FX.setMorph(m);
           }
-        });
-      },{rootMargin:'-45% 0px -45% 0px'});
-      lifeSecs.forEach(function(s){io.observe(s);});
-    }
+        }
+      });
+      a.addEventListener('mouseleave',function(){
+        if(currentActiveSec){
+          var m=currentActiveSec.getAttribute('data-morph')||'drift';
+          FX.setMorph(m);
+        }
+      });
+    });
   });
 
   safe(function(){
@@ -1068,9 +1165,9 @@ body.scrolled .hint{opacity:0}
   safe(function(){
     var PAIR="hmzvseemtzhhvznw9uwbag85hctmfnkbhzux16cy7ca3";
     var API="https://api.dexscreener.com/latest/dex/pairs/solana/"+PAIR;
-    var STATS_URL="https://academy.cate.meme/api/stats";
+    var STATS_URL="/api/stats";
     var bar=document.getElementById("ticker");
-    if(!bar||typeof fetch!=="function")return;
+    if(!bar||typeof window.fetch!=="function")return;
 
     var BASE=60000, wait=BASE, timer=null, lastOk=0;
 
