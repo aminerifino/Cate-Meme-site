@@ -256,8 +256,8 @@ body.scrolled .hint{opacity:0}
 .lines .ln:nth-child(3)>span{transition-delay:.16s}
 .lines .ln:nth-child(4)>span{transition-delay:.24s}
 
-#l2 .wrap{min-height:115vh;min-height:115svh;padding:8rem 0}
-#l1 .wrap{align-items:center;text-align:center}
+#story .wrap{min-height:115vh;min-height:115svh;padding:8rem 0}
+#awakening .wrap{align-items:center;text-align:center}
 .h-title{
   font-family:var(--word);font-weight:700;
   font-size:clamp(2rem,8vw,6.2rem);
@@ -308,7 +308,7 @@ body.scrolled .hint{opacity:0}
 .omen em{font-style:italic;color:var(--gold)}
 .omen .dim{color:var(--dim)}
 
-#l3 .wrap{align-items:center;text-align:center}
+#coin .wrap{align-items:center;text-align:center}
 .coin-stage{position:relative;width:min(46vmin,340px);height:min(46vmin,340px);aspect-ratio:1;margin:2.2rem 0}
 .coin-stage img{
   width:100%;height:100%;border-radius:50%;position:relative;z-index:2;
@@ -356,45 +356,45 @@ body.scrolled .hint{opacity:0}
 }
 .scene__line b{font-style:normal;font-weight:600;color:var(--gold)}
 
-#l5 .scene{
+#family .scene{
   --m:min(84vw,54vh);
   flex-direction:column;gap:clamp(1.3rem,3.4vh,2.4rem);padding:0 clamp(1rem,4vw,3rem);
 }
-#l5 .iris{
+#family .iris{
   -webkit-clip-path:none!important;clip-path:none!important;
   position:relative;inset:auto;flex:none;
   width:var(--m);height:var(--m);border-radius:50%;
   box-shadow:0 0 0 1px rgba(244,168,186,.6),0 0 70px rgba(244,168,186,.3),
              0 25px 60px -20px rgba(0,0,0,.18);
 }
-#l5 .iris img{object-position:50% 50%;filter:saturate(.95) contrast(1.02)}
-#l5 .iris::after{background:radial-gradient(circle at 50% 44%,transparent 58%,rgba(255,255,255,.45) 100%)}
-#l5 .scene__txt{max-width:32ch;margin-inline:auto}
-#l5 .scene__txt .num{margin-bottom:1.1rem}
+#family .iris img{object-position:50% 50%;filter:saturate(.95) contrast(1.02)}
+#family .iris::after{background:radial-gradient(circle at 50% 44%,transparent 58%,rgba(255,255,255,.45) 100%)}
+#family .scene__txt{max-width:32ch;margin-inline:auto}
+#family .scene__txt .num{margin-bottom:1.1rem}
 
 @media (min-width:1000px) and (min-height:640px){
-  #l5 .scene{--m:min(48vw,80vh);flex-direction:row;gap:clamp(2.2rem,4.5vw,5rem);justify-content:center}
-  #l5 .scene__txt{text-align:left;max-width:22ch;margin:0}
-  #l5 .scene__txt .num{justify-content:flex-start}
-  #l5 .scene__txt .num::after{display:block}
+  #family .scene{--m:min(48vw,80vh);flex-direction:row;gap:clamp(2.2rem,4.5vw,5rem);justify-content:center}
+  #family .scene__txt{text-align:left;max-width:22ch;margin:0}
+  #family .scene__txt .num{justify-content:flex-start}
+  #family .scene__txt .num::after{display:block}
 }
 @media (max-height:560px){
-  #l5 .scene{--m:min(70vw,62vh)}
+  #family .scene{--m:min(70vw,62vh)}
 }
-#l5 .iris img{object-position:50% 50%;filter:saturate(.95) contrast(1.02)}
-#l5 .iris::after{background:radial-gradient(circle at 50% 44%,transparent 52%,rgba(255,255,255,.45) 100%)}
-#l5 .scene__txt{max-width:30ch;margin-inline:auto}
-#l5 .scene__txt .num{margin-bottom:1.1rem}
+#family .iris img{object-position:50% 50%;filter:saturate(.95) contrast(1.02)}
+#family .iris::after{background:radial-gradient(circle at 50% 44%,transparent 52%,rgba(255,255,255,.45) 100%)}
+#family .scene__txt{max-width:30ch;margin-inline:auto}
+#family .scene__txt .num{margin-bottom:1.1rem}
 @media (max-height:560px){
-  #l5 .iris{width:min(38vmin,260px);height:min(38vmin,260px)}
+  #family .iris{width:min(38vmin,260px);height:min(38vmin,260px)}
 }
-#l5 .iris::after{
+#family .iris::after{
   background:
     radial-gradient(ellipse 85% 70% at 52% 40%,rgba(255,255,255,.1) 0%,rgba(255,255,255,.4) 55%,rgba(255,255,255,.7) 100%),
     linear-gradient(180deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,.1) 26%,rgba(255,255,255,.5) 74%,rgba(255,255,255,.85) 100%);
 }
-#l5 .scene{align-items:flex-end}
-#l5 .scene__txt{padding-bottom:11vh}
+#family .scene{align-items:flex-end}
+#family .scene__txt{padding-bottom:11vh}
 @media (max-width:430px){
   .top{padding:.9rem .8rem}
   .brand{font-size:.64rem;letter-spacing:.16em;gap:.5rem}
@@ -409,8 +409,8 @@ body.scrolled .hint{opacity:0}
   .h-meta{letter-spacing:.22em}
   .h-rule span{letter-spacing:.26em;font-size:.6rem}
   .odo{font-size:clamp(2rem,8.4vw,8rem)}
-  #l5 .iris img{object-position:62% 42%}
-  #l5 .scene__txt{padding-bottom:8vh}
+  #family .iris img{object-position:62% 42%}
+  #family .scene__txt{padding-bottom:8vh}
 }
 
 .law{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:2.6rem;border-radius:12px;overflow:hidden}
@@ -420,7 +420,7 @@ body.scrolled .hint{opacity:0}
 .law h3 span{font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:var(--dim);display:block;margin-bottom:.8rem}
 .law p{font-size:.92rem;color:var(--dim);line-height:1.65}
 
-#l7 .wrap{align-items:center;text-align:center}
+#tokenomics .wrap{align-items:center;text-align:center}
 .odo{
   display:flex;gap:.06em;font-family:var(--disp);font-weight:700;
   font-size:clamp(2.6rem,9vw,8rem);line-height:1;color:var(--ivory);
@@ -451,7 +451,7 @@ body.scrolled .hint{opacity:0}
 .rstep p{color:var(--dim);max-width:56ch}
 .rstep a{color:var(--ember);text-decoration-color:rgba(224,96,133,.4);text-underline-offset:4px}
 
-#l9 .wrap{align-items:center;text-align:center}
+#contract .wrap{align-items:center;text-align:center}
 .ninth{
   font-family:var(--disp);font-weight:300;font-size:clamp(1.95rem,5vw,3.7rem);line-height:1.3;max-width:22ch;
   color:var(--ivory);
@@ -557,7 +557,7 @@ body.scrolled .hint{opacity:0}
 </a>
 
 <header class="top">
-  <a class="brand" href="#l1"><img src="/images/zpO5lsW__400x400.jpg" alt="CALI Logo">CALI</a>
+  <a class="brand" href="/"><img src="/images/zpO5lsW__400x400.jpg" alt="CALI Logo">CALI</a>
   <div class="top__buy">
     <span class="top__label" aria-hidden="true">Buy on:</span>
     <a class="top__alt" href="https://fomo.family/tokens/solana/8k4sBtEeK4pf26noKqApv8NBTnuSJcbdwpKYknk5PbAA" target="_blank" rel="noopener noreferrer">FOMO</a>
@@ -566,22 +566,22 @@ body.scrolled .hint{opacity:0}
 </header>
 
 <nav class="lives-nav" aria-label="Nine chapters">
-  <a href="#l1" data-l="1">I<span>&nbsp;- awakening</span></a>
-  <a href="#l2" data-l="2">II<span>&nbsp;- the muse</span></a>
-  <a href="#l3" data-l="3">III<span>&nbsp;- the coin</span></a>
-  <a href="#l4" data-l="4">IV<span>&nbsp;- the walk</span></a>
-  <a href="#l5" data-l="5">V<span>&nbsp;- the family</span></a>
-  <a href="#l6" data-l="6">VI<span>&nbsp;- the law</span></a>
-  <a href="#l7" data-l="7">VII<span>&nbsp;- the number</span></a>
-  <a href="#l8" data-l="8">VIII<span>&nbsp;- the ritual</span></a>
-  <a href="#l9" data-l="9">IX<span>&nbsp;- yours</span></a>
+  <a href="#awakening" data-l="1">I<span>&nbsp;- awakening</span></a>
+  <a href="#story" data-l="2">II<span>&nbsp;- the muse</span></a>
+  <a href="#coin" data-l="3">III<span>&nbsp;- the coin</span></a>
+  <a href="#journey" data-l="4">IV<span>&nbsp;- the walk</span></a>
+  <a href="#family" data-l="5">V<span>&nbsp;- the family</span></a>
+  <a href="#law" data-l="6">VI<span>&nbsp;- the law</span></a>
+  <a href="#tokenomics" data-l="7">VII<span>&nbsp;- the number</span></a>
+  <a href="#how-to-buy" data-l="8">VIII<span>&nbsp;- the ritual</span></a>
+  <a href="#contract" data-l="9">IX<span>&nbsp;- yours</span></a>
 </nav>
 
 <div class="hint" aria-hidden="true">SCROLL</div>
 
 <main>
 
-<section class="life" id="l1" data-l="1" data-morph="drift">
+<section class="life" id="awakening" data-l="1" data-morph="drift">
   <div class="wrap shell">
     <p class="num reveal">Life I - Awakening</p>
     <h1 class="h-title reveal">CALI<span class="it">TERRIER</span></h1>
@@ -590,13 +590,13 @@ body.scrolled .hint{opacity:0}
     <p class="h-meta reveal">$CALI &nbsp;·&nbsp; SOLANA &nbsp;·&nbsp; FAIR LAUNCH</p>
     <div class="cta-row reveal">
       <a class="btn btn--gold mag" href="https://pump.fun/coin/8k4sBtEeK4pf26noKqApv8NBTnuSJcbdwpKYknk5PbAA" target="_blank" rel="noopener noreferrer">GET $CALI</a>
-      <a class="btn btn--line mag" href="#l2">BEGIN THE STORY ↓</a>
+      <a class="btn btn--line mag" href="#story">BEGIN THE STORY ↓</a>
     </div>
     <p class="cta-note reveal">on pump.fun · also on fomo</p>
   </div>
 </section>
 
-<section class="life" id="l2" data-l="2" data-morph="paw">
+<section class="life" id="story" data-l="2" data-morph="paw">
   <div class="wrap shell reveal">
     <p class="num">Life II - The Muse</p>
     <p class="omen lines">
@@ -608,7 +608,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life" id="l3" data-l="3" data-morph="ring">
+<section class="life" id="coin" data-l="3" data-morph="ring">
   <div class="wrap shell reveal">
     <p class="num">Life III - The Coin</p>
     <p class="omen lines">
@@ -625,7 +625,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life tall" id="l4" data-l="4" data-morph="dust" data-scrub>
+<section class="life tall" id="journey" data-l="4" data-morph="dust" data-scrub>
   <div class="wrap">
     <div class="scene">
       <div class="iris" data-iris>
@@ -639,7 +639,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life tall" id="l5" data-l="5" data-morph="puppy" data-scrub>
+<section class="life tall" id="family" data-l="5" data-morph="puppy" data-scrub>
   <div class="wrap">
     <div class="scene">
       <div class="iris" data-iris>
@@ -653,7 +653,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life" id="l6" data-l="6" data-morph="puppy">
+<section class="life" id="law" data-l="6" data-morph="puppy">
   <div class="wrap shell reveal">
     <p class="num">Life VI - The Law</p>
     <p class="omen lines">
@@ -681,7 +681,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life" id="l7" data-l="7" data-morph="nine">
+<section class="life" id="tokenomics" data-l="7" data-morph="nine">
   <div class="wrap shell reveal">
     <p class="num">Life VII - The Number</p>
     <div class="odo" id="odo" aria-label="1,000,000,000"></div>
@@ -694,7 +694,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life" id="l8" data-l="8" data-morph="drift">
+<section class="life" id="how-to-buy" data-l="8" data-morph="drift">
   <div class="wrap shell reveal">
     <p class="num">Life VIII - The Ritual</p>
     <p class="omen lines">
@@ -719,7 +719,7 @@ body.scrolled .hint{opacity:0}
   </div>
 </section>
 
-<section class="life" id="l9" data-l="9" data-morph="nine">
+<section class="life" id="contract" data-l="9" data-morph="nine">
   <div class="wrap shell reveal">
     <p class="num">Life IX - Yours</p>
     <p class="ninth">Maye Musk's favorite terrier.<br><em>The journey is yours.</em></p>
@@ -1031,7 +1031,7 @@ body.scrolled .hint{opacity:0}
         var total=sec.offsetHeight-innerHeight;
         var p=Math.min(1,Math.max(0,-r.top/ (total||1)));
         var iris=sec.querySelector('[data-iris]');
-        if(sec.id==='l5'){
+        if(sec.id==='family'||sec.getAttribute('data-l')==='5'){
           if(iris){iris.style.webkitClipPath='';iris.style.clipPath='';}
           return;
         }
@@ -1045,6 +1045,18 @@ body.scrolled .hint{opacity:0}
     }
     addEventListener('scroll',onScroll,{passive:true});
     onScroll();
+
+    document.addEventListener('click',function(e){
+      var a=e.target.closest('a[href^="#"]');
+      if(!a)return;
+      var targetId=a.getAttribute('href');
+      if(!targetId||targetId==='#')return;
+      var targetEl=document.querySelector(targetId);
+      if(targetEl){
+        e.preventDefault();
+        targetEl.scrollIntoView({behavior:'smooth'});
+      }
+    });
 
     lifeSecs.forEach(function(s){
       s.addEventListener('mouseenter',function(){

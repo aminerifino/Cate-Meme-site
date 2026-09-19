@@ -20,8 +20,8 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CATE Arcade - Ninth Life Mini-Game</title>
-<meta name="description" content="Play the official CATE Arcade retro coin catcher. Collect $CATE tokens, dodge the red candles, and survive with your nine lives.">
+<title>CALI Arcade - Ninth Life Mini-Game</title>
+<meta name="description" content="Play the official CALI Arcade retro coin catcher. Collect $CALI tokens, dodge the red candles, and survive with your nine lives.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="/images/zpO5lsW__400x400.jpg"><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
@@ -121,9 +121,9 @@ footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:cente
 <body>
 
 <header class="top">
-  <a class="brand" href="/"><img src="/images/zpO5lsW__400x400.jpg" alt="Logo" class="brand-img"> CATE ARCADE</a>
+  <a class="brand" href="/"><img src="/images/zpO5lsW__400x400.jpg" alt="Logo" class="brand-img"> CALI ARCADE</a>
   <nav class="top__nav">
-    <a class="top__link" href="/#l1">Story</a>
+    <a class="top__link" href="/">Story</a>
     <a class="top__link" href="/learn">Learn</a>
     <a class="top__link" href="/raids">Raids</a>
     <a class="top__link active" href="/arcade">Arcade</a>
@@ -131,7 +131,7 @@ footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:cente
     <a class="top__link" href="/vocab">Vocab</a>
   </nav>
   <div class="top__actions">
-    <a class="btn-gold" href="https://pump.fun/coin/8k4sBtEeK4pf26noKqApv8NBTnuSJcbdwpKYknk5PbAA" target="_blank" rel="noopener noreferrer">BUY $CATE</a>
+    <a class="btn-gold" href="https://pump.fun/coin/8k4sBtEeK4pf26noKqApv8NBTnuSJcbdwpKYknk5PbAA" target="_blank" rel="noopener noreferrer">BUY $CALI</a>
   </div>
 </header>
 
@@ -152,7 +152,7 @@ footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:cente
       <canvas id="gameCanvas" width="800" height="500"></canvas>
       <div class="game-overlay" id="startOverlay">
         <h2>NINTH LIFE RUNNER</h2>
-        <p>Catch Golden $CATE coins (+100) & SOL diamonds (+250). Dodge red dump candles (-1 Life)!</p>
+        <p>Catch Golden $CALI coins (+100) & SOL diamonds (+250). Dodge red dump candles (-1 Life)!</p>
         <button class="btn-gold" style="font-size:1rem;padding:.8rem 2rem;cursor:pointer" onclick="startGame()">START GAME 🚀</button>
       </div>
       <div class="game-overlay" id="gameOverOverlay" style="display:none">
@@ -171,7 +171,7 @@ footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:cente
 
 <footer>
   <div class="shell">
-    <p>© 2026 THE CATECOIN COMMUNITY · ARCADE BUILD 1.2 · THE NINTH LIFE</p>
+    <p>© 2026 THE CALI COMMUNITY · ARCADE BUILD 1.2 · THE NINTH LIFE</p>
   </div>
 </footer>
 
@@ -269,7 +269,7 @@ function loop(t){
   if(player.x < 10) player.x = 10;
   if(player.x > canvas.width - player.width - 10) player.x = canvas.width - player.width - 10;
 
-  // Draw player (CATE Cat basket)
+  // Draw player (CALI Cat basket)
   ctx.font = '42px sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('🐱', player.x + player.width/2, player.y + 36);
