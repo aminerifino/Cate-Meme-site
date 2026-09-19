@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  try {
+    if (typeof window !== "undefined") {
+      var _f = window.fetch;
+      try {
+        Object.defineProperty(window, "fetch", {
+          get: function() { return _f; },
+          set: function(fn) { _f = fn; },
+          configurable: true,
+          enumerable: true
+        });
+      } catch(e) {}
+    }
+  } catch(e) {}
+})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CATE Academy & Learn - The Ninth Life</title>
 <meta name="description" content="Master Solana, wallet security, and the ninth life with CATE Academy. Free interactive lessons and crypto safety guides.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
+<link rel="icon" href="/images/zpO5lsW__400x400.jpg"><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -45,6 +62,7 @@ a{color:inherit;text-decoration:none}
   background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(244,168,186,.3);
 }
+.brand img, .brand-img{width:28px;height:28px;border-radius:50%;object-fit:cover;box-shadow:0 0 12px rgba(244,168,186,.7);display:inline-block;vertical-align:middle}
 .brand{display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.85rem;letter-spacing:.2em;color:var(--gold);font-weight:700}
 .brand-icon{font-size:1.4rem;display:inline-block;filter:drop-shadow(0 0 10px rgba(244,168,186,.8))}
 .top__nav{display:flex;align-items:center;gap:1.5rem}
@@ -122,7 +140,7 @@ footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:cente
 <body>
 
 <header class="top">
-  <a class="brand" href="/"><span class="brand-icon">🐱</span> $CATE</a>
+  <a class="brand" href="/"><img src="/images/zpO5lsW__400x400.jpg" alt="Logo" class="brand-img"> $CATE</a>
   <nav class="top__nav">
     <a class="top__link" href="/#l1">Story</a>
     <a class="top__link active" href="/learn">Learn</a>
@@ -132,7 +150,7 @@ footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:cente
     <a class="top__link" href="/vocab">Vocab</a>
   </nav>
   <div class="top__actions">
-    <a class="btn-gold" href="https://pump.fun/coin/Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump" target="_blank" rel="noopener noreferrer">BUY $CATE</a>
+    <a class="btn-gold" href="https://pump.fun/coin/8k4sBtEeK4pf26noKqApv8NBTnuSJcbdwpKYknk5PbAA" target="_blank" rel="noopener noreferrer">BUY $CATE</a>
   </div>
 </header>
 
@@ -212,7 +230,7 @@ footer{padding:3rem 0;border-top:1px solid rgba(244,168,186,.3);text-align:cente
     <div class="quiz-q" id="q2">
       <p class="quiz-q-title">2. What is the official token contract address for $CATE on Solana?</p>
       <div class="quiz-options">
-        <button class="opt-btn" onclick="answer(this, true, 'Correct! Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump is the authentic CA.')">Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump</button>
+        <button class="opt-btn" onclick="answer(this, true, 'Correct! 8k4sBtEeK4pf26noKqApv8NBTnuSJcbdwpKYknk5PbAA is the authentic CA.')">8k4sBtEeK4pf26noKqApv8NBTnuSJcbdwpKYknk5PbAA</button>
         <button class="opt-btn" onclick="answer(this, false, 'Incorrect. Always verify character by character on Solscan.')">So11111111111111111111111111111111111111112</button>
         <button class="opt-btn" onclick="answer(this, false, 'Incorrect. Beware of copycat ticker scams.')">CATEcoin99999999999999999999999999999999999</button>
         <button class="opt-btn" onclick="answer(this, false, 'Incorrect. Always check the official website and X.')">PumpFunOfficialTokenAddress123456789</button>
