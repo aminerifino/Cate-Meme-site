@@ -14,7 +14,7 @@ app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 // API Proxy for live DexScreener token statistics
 app.get('/api/stats', async (req, res) => {
-  const PAIR = 'hmzvseemtzhhvznw9uwbag85hctmfnkbhzux16cy7ca3';
+  const PAIR = '2i2iulr7uwk1sdrb17t5futimnfql7fyy7rh69brzihc';
   try {
     const response = await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${PAIR}`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
